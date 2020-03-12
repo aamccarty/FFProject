@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using FFProject.Models;
 using FFProject.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FFProject.Controllers
 {
+    [Authorize]
     public class MessageController : Controller
     {
         IMessage repo;
@@ -42,6 +44,11 @@ namespace FFProject.Controllers
                 message.MessageText = messageText;
                 repo.AddMessage(message, u);
             }
+            return RedirectToAction("FormPage");
+        }
+        public RedirectToActionResult Delete(int id)
+        {
+            repo.Delete(id);
             return RedirectToAction("FormPage");
         }
 

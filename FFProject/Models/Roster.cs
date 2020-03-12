@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace FFProject.Models
 {
     public class Roster
-    {
-       public int RosterID { get; set; }
+    { 
+        [Key]
+        public int RosterID { get; set; }
 
         public string PlayerName { get; set; }
 

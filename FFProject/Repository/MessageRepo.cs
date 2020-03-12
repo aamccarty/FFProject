@@ -39,13 +39,13 @@ namespace FFProject.Repository
             context.Messages.Update(message);
             return context.SaveChanges();
         }
-
+     
         public int Delete(int id)
         {
             var messageDB = context.Messages.First(a => a.MessageID == id);
             context.Remove(messageDB);
             return context.SaveChanges();
         }
-
+        
     }
 }
