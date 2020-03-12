@@ -1,0 +1,46 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "Fantasy Football Form";
+    Layout = "~/Views/Shared/_FFForm.cshtml";
+}
+        <head>
+            <meta name="viewport" content="width=device-width" />
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        </head>
+<body>
+    <div>
+        <div class="panel-body"> <h2> Forms</h2></div>
+        <div>
+            <table class="table table-sm table-striped table-bordered">
+                <tr><th>Name</th><th>Post</th></tr>
+                @if (Model.Count() == 0)
+                {
+                    <tr><td colspan="3" class="text-center">No Message</td></tr>
+                }
+                else
+                {
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>MessageText</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Message m in Model)
+                    {
+                        <tr>
+                            <td>@m.Messenger</td>
+                            <td>@m.MessageText</td>
+
+                        </tr>
+                    }
+                </tbody>
+                }
+            </table>
+
+            <br />
+            <a class="nav-link" asp-controller="Message" asp-action="FormMessage">Submit a Message to the Form</a>
+
+        </div>
+    </div>
+</body>
