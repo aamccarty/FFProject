@@ -13,6 +13,12 @@ namespace FFProject.Models
         public ApplicationDbContext(
             DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<TeamModel> Teams{ get; set; }
+        public DbSet<Roster> Rosters { get; set; }
+
+        public DbSet<TradeOffers> Trades { get; set; }
+       
 
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider, IConfiguration configuration)
         {

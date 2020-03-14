@@ -25,7 +25,7 @@ namespace FFProject.Controllers
             return View();
         }
 
-
+         [AllowAnonymous]
         public IActionResult Links()
         {
             return View();
@@ -37,6 +37,7 @@ namespace FFProject.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+        
+        
     }
 }

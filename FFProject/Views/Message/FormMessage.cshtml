@@ -1,0 +1,43 @@
+﻿@model FFProject.Models.Message
+@{
+    ViewData["Title"] = "Fantasy Football Form";
+    Layout = "~/Views/Shared/_FFForm.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+
+
+    <div class="panel panel-success">
+        <div class="panel-heading text-center"><h4>Want to Make a post or just trash talk?</h4></div>
+        <div class="panel-body">
+            <form class="p-a-1" asp-action="FormMessage" method="post">
+                <div asp-validation-summary="ModelOnly" style="background-color: red"></div>
+                <div class="form-group">
+                    <label asp-for="Messenger"> Your Name please:</label>
+                    <div><span asp-validation-for="Messenger"> </span></div>
+                    <input class="form-control" asp-for="Messenger" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MessageText">Leave your Message Here</label>
+                    <div><span asp-validation-for="Messenger"></span></div>
+                    <textarea class="form-control" rows="5" asp-for="MessageText"></textarea>
+
+
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Submit</button>
+
+</form>
+        </div>
+    </div>
+
+</body>
+
+</html>
