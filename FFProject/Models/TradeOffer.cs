@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace FFProject.Models
 {
-    public class TradeOffers
+    public class TradeOffer
     {
         [Key]
         public int TradeID { get; set; }
 
-        public List<Roster> Player { get; set; }
+        public List<TradeOffer> Player { get; set; }
 
 
     }

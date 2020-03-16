@@ -17,7 +17,7 @@ namespace FFProject.Models
         public DbSet<TeamModel> Teams{ get; set; }
         public DbSet<Roster> Rosters { get; set; }
 
-        public DbSet<TradeOffers> Trades { get; set; }
+        public DbSet<TradeOffer> Trades { get; set; }
        
 
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider, IConfiguration configuration)

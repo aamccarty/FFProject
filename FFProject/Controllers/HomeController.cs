@@ -33,15 +33,16 @@ namespace FFProject.Controllers
             return View();
         }
 
+
         [HttpPost]
-        public RedirectToActionResult PlayerAdd(string playername, string playerpostion, int playervalue)
+        public RedirectToActionResult PlayerAdd(string playername, string playerposition, int playervalue)
         {
             if (ModelState.IsValid)
             {
                 Roster roster = new Roster()
                 {
                     PlayerName = playername,
-                    PlayerPosition = playerpostion,
+                    PlayerPosition = playerposition,
                     PlayerValue = playervalue
                 };
                 Repository.AddPlayer(roster);
@@ -49,6 +50,27 @@ namespace FFProject.Controllers
             return RedirectToAction("Index");
         }
 
+       /* [HttpPost]
+        public RedirectToActionResult TradeOffer(string playername, string playerposition, int playervalue)
+        {
+            if (ModelState.IsValid)
+            {
+
+                Roster offer = new Roster()
+                {
+                    PlayerName = playername,
+                    PlayerPosition = playerposition,
+                    PlayerValue = playervalue
+                };
+                
+                Repository.AddTrade(offer);
+
+                
+
+            }
+            return RedirectToAction("TradeOffer");
+        }
+        */
 
         [AllowAnonymous]
         public IActionResult Links()
@@ -62,7 +84,13 @@ namespace FFProject.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
-        
+
+        public RedirectToActionResult Delete(int id)
+        {
+            Repository.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

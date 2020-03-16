@@ -19,7 +19,7 @@ namespace FFProject.Repository
 
         public void AddPlayer(Roster roster)
         {
-            contextRoster.Users.Add(roster.Owner);
+            //contextRoster.Users.Add(roster.Owner); Not Loading Owners Correctly
             contextRoster.Rosters.Add(roster);
             contextRoster.SaveChanges();
         }
@@ -29,6 +29,7 @@ namespace FFProject.Repository
             roster = contextRoster.Rosters.First(s => s.PlayerName == name);
             return roster;
         }
+
         public Roster GetPlayerByID(int id)
         {
             return contextRoster.Rosters.First(a => a.RosterID == id);
