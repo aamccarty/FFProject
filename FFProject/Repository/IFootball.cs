@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace FFProject.Repository
 {
-    public class IFootball
+    public interface IFootball
     {
-        //List<AppUser> GetAllUsers();
+        List<Roster> Rosters { get;}
+
+        public void AddPlayer(Roster roster);
+
+        //public void AddTrade(Roster roster);
+
+        Roster GetPlayerByName(string name);
+        Roster GetPlayerByID(int id);
+        int Edit(Roster roster);
+        int Delete(int id);
 
     }
 }

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace FFProject.Models
 {
     public class Roster
-    { 
+    {
+
         [Key]
         public int RosterID { get; set; }
 
@@ -17,6 +18,6 @@ namespace FFProject.Models
 
         public int PlayerValue { get; set; }
 
-       
+        public AppUser Owner { get; set; }
     }
 }

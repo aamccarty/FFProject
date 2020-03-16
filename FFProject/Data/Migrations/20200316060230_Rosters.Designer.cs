@@ -4,14 +4,16 @@ using FFProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FFProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200316060230_Rosters")]
+    partial class Rosters
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,9 +135,14 @@ namespace FFProject.Data.Migrations
                     b.Property<int>("PlayerValue")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TradeOffersTradeID")
+                        .HasColumnType("int");
+
                     b.HasKey("RosterID");
 
                     b.HasIndex("OwnerId");
+
+                    b.HasIndex("TradeOffersTradeID");
 
                     b.ToTable("Rosters");
                 });
@@ -155,19 +162,14 @@ namespace FFProject.Data.Migrations
                     b.ToTable("Teams");
                 });
 
-            modelBuilder.Entity("FFProject.Models.TradeOffer", b =>
+            modelBuilder.Entity("FFProject.Models.TradeOffers", b =>
                 {
                     b.Property<int>("TradeID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("TradeOfferTradeID")
-                        .HasColumnType("int");
-
                     b.HasKey("TradeID");
-
-                    b.HasIndex("TradeOfferTradeID");
 
                     b.ToTable("Trades");
                 });
@@ -322,13 +324,10 @@ namespace FFProject.Data.Migrations
                     b.HasOne("FFProject.Models.AppUser", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId");
-                });
 
-            modelBuilder.Entity("FFProject.Models.TradeOffer", b =>
-                {
-                    b.HasOne("FFProject.Models.TradeOffer", null)
-                        .WithMany("Offers")
-                        .HasForeignKey("TradeOfferTradeID");
+                    b.HasOne("FFProject.Models.TradeOffers", null)
+                        .WithMany("Player")
+                        .HasForeignKey("TradeOffersTradeID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
