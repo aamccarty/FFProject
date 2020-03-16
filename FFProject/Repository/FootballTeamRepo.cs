@@ -19,8 +19,14 @@ namespace FFProject.Repository
 
         public void AddPlayer(Roster roster)
         {
-            contextRoster.Users.Add(roster.Owner);
             contextRoster.Rosters.Add(roster);
+            contextRoster.SaveChanges();
+        }
+
+        public void AddTrade(TradeOffer offer)
+        {
+            contextRoster.Trades.Add(offer);
+            //contextRoster.Remove(roster);
             contextRoster.SaveChanges();
         }
         public Roster GetPlayerByName(string name)

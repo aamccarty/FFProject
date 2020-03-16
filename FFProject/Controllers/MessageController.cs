@@ -46,6 +46,12 @@ namespace FFProject.Controllers
             }
             return RedirectToAction("FormPage");
         }
+
+        public RedirectToActionResult Edit(int id)
+        {
+            repo.Delete(id);
+            return RedirectToAction("FormMessage");
+        }
         public RedirectToActionResult Delete(int id)
         {
             repo.Delete(id);

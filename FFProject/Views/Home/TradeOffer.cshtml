@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TradeOffer>
+@{
+    ViewData["Title"] = "Fantasy Trading Page";
+    Layout = "~/Views/Shared/_FFForm.cshtml";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div>
+        <div class="panel-body"> <h2> TradePage</h2></div>
+        <div>
+            <table class="table table-sm table-bordered">
+                <tr><th>Name</th><th>Email</th><th>Value</th></tr>
+                @if (Model.Count() == 0)
+                {
+                    <tr><td colspan="3" class="text-center">No Messages </td></tr>
+                }
+                @foreach (TradeOffer offer in Model)
+                {
+            <tr>
+                <td>@offer.PName</td>
+                <td>@offer.PPosition</td>
+                <td>@offer.PValue</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@offer.TradeID=" post">
+                        <button type="submit"
+                                class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+                }
+                }
+            </table>
+
+            <br />
+        </div>
+    </div>
+    <
+</body>

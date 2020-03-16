@@ -8,9 +8,11 @@ namespace FFProject.Repository
 {
     public interface IFootball
     {
-        List<Roster> Rosters { get; }
+        List<Roster> Rosters { get;}
 
         public void AddPlayer(Roster roster);
+
+        public void AddTrade(Roster roster);
 
         Roster GetPlayerByName(string name);
         Roster GetPlayerByID(int id);

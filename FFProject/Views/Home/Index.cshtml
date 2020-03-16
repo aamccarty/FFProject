@@ -22,14 +22,14 @@
                     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
                 </li>
             </ul>
-            <a class="nav-link" asp-controller="Roster" asp-action="PlayerAdd">Add a player to your team</a>
+            <a class="nav-link" asp-controller="Home" asp-action="PlayerAdd">Add a player to your team</a>
         </div>
 
         <table class="table table-sm table-bordered">
             <tr><th>Name</th><th>Position</th><th>Value</th></tr>
             @if (Model.Count() == 0)
             {
-                <tr><td colspan="3" class="text-center">No Messages </td></tr>
+                <tr><td colspan="3" class="text-center">No Players Listed </td></tr>
             }
             else
             {
@@ -41,7 +41,7 @@
             <td>@roster.PlayerValue.</td>
             <td>
                 <form asp-action="Delete" asp-route-id="@roster.RosterID" method="post">
-                    <a class="btn btn-sm btn-primary" asp-action="TradePlayer"
+                    <a class="btn btn-sm btn-primary" asp-action="TradeOffer"
                        asp-route-id="@roster.RosterID">Trade</a>
                     <button type="submit"
                             class="btn btn-sm btn-danger">
