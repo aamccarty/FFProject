@@ -48,7 +48,7 @@ namespace FFProject
             
 
             services.AddTransient<IMessage, MessageRepo>();
-            /*services.AddTransient<IFootball, FootballTeamRepo>();*/
+            services.AddTransient<IFootball, FootballTeamRepo>();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
                 Configuration["ConnectionStrings:MsSqlConnection"]));

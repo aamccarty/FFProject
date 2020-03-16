@@ -1,21 +1,57 @@
-﻿@model List<Roster>
+﻿@model IEnumerable<Roster>
 @{
     ViewData["Title"] = "Your Fantasy Team";
     Layout = "~/Views/Shared/_FFForm.cshtml";
 }
-<body>
-    <div class="text-center">
-        <h1 class="jumbotron-fluid">@ViewBag.welcome</h1>
-        <p>THE DATE IS: @ViewData["Date"]</p>
-       
-    </div>
-    <div>
-    <ul>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-    </li>
-    </ul>
-        <a class="nav-link" asp-controller="Roster" asp-action="PlayerAdd">Add a player to your team</a>
-    </div>
+    <body>
+        <div class="text-center">
+            <h1 class="jumbotron-fluid">@ViewBag.welcome</h1>
+            <p>THE DATE IS: @ViewData["Date"]</p>
 
-</body>
+        </div>
+        <div>
+            <label for="PearlerSub">Add a team log here</label>
+            <input type="file"
+                   id="TeamLogo" name="TeamLogoImage"
+                   accept="image/png, image/jpeg">
+        </div>
+        <div>
+
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                </li>
+            </ul>
+            <a class="nav-link" asp-controller="Roster" asp-action="PlayerAdd">Add a player to your team</a>
+        </div>
+
+        <table class="table table-sm table-bordered">
+            <tr><th>Name</th><th>Position</th><th>Value</th></tr>
+            @if (Model.Count() == 0)
+            {
+                <tr><td colspan="3" class="text-center">No Messages </td></tr>
+            }
+            else
+            {
+                foreach (Roster roster in Model)
+                {
+            <tr>
+            <td>@roster.PlayerName</td>
+            <td>@roster.PlayerPosition.</td>
+            <td>@roster.PlayerValue.</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@roster.RosterID" method="post">
+                    <a class="btn btn-sm btn-primary" asp-action="TradePlayer"
+                       asp-route-id="@roster.RosterID">Trade</a>
+                    <button type="submit"
+                            class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+                }
+            }
+        </table>
+
+    </body>

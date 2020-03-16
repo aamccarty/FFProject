@@ -1,17 +1,29 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    ViewData["Title"] = "Links";
+    Layout = "~/Views/Shared/_FFTeamPage.cshtml";
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Links</title>
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
 </head>
 <body>
-    <p> Links to be inserted later</p>
+    <h1>Team for @User.Identity.Name</h1>
+    <div class="text-center">
+        <p>Here are some useful Links to see Fantasy Football information</p>
+    </div>
+    
+    <div class="text-md-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Uc6UhH1rmUY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div>
+        <h3>Sites we Like</h3>
+        <a class="nav-link" href=" https://www.thesprucecrafts.com/10-minute-crafts-for-kids-1250670"> SpruceCrafts</a>
+        <a class="nav-link" href=" https://pbskids.org/"> PBS Kids</a>
+        <a class="nav-link" href="http://www.first-school.ws/theme/onlinepuzzle.htm">Online Jigsaws</a>
+    </div>
 </body>
 </html>

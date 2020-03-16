@@ -12,20 +12,45 @@ namespace FFProject.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        //IFootball Repository;
-       /* public HomeController(IFootball r)
+        IFootball Repository;
+        public HomeController(IFootball r)
         {
             Repository = r;
-        }*/
+        }
+
+        [HttpGet]
         public IActionResult Index()
         {
             ViewBag.welcome = "WELCOME";
             ViewData["Date"] = DateTime.Now.Date.ToString("MM-dd-yyyy");
             ViewData["Time"] = DateTime.Now.ToString("t");
+            List<Roster> roster = Repository.Rosters;
+            return View(roster);
+        }
+
+        public IActionResult PlayerAdd()
+        {
             return View();
         }
 
-         [AllowAnonymous]
+        [HttpPost]
+        public RedirectToActionResult PlayerAdd(string playername, string playerpostion, int playervalue)
+        {
+            if (ModelState.IsValid)
+            {
+                Roster roster = new Roster()
+                {
+                    PlayerName = playername,
+                    PlayerPosition = playerpostion,
+                    PlayerValue = playervalue
+                };
+                Repository.AddPlayer(roster);
+            }
+            return RedirectToAction("Index");
+        }
+
+
+        [AllowAnonymous]
         public IActionResult Links()
         {
             return View();
