@@ -36,10 +36,9 @@ namespace FFProject.Controllers
         
         public IActionResult TradeOffer()
         {
-            List<TradeOffer> offers = Repository.Offers;
-            return View(offers);
+            return View();
         }
-
+        
         [HttpPost]
         public RedirectToActionResult PlayerAdd(string playername, string playerposition, int playervalue)
         {
@@ -55,7 +54,7 @@ namespace FFProject.Controllers
             }
             return RedirectToAction("Index");
         }
-
+        /*
         [HttpPost]
         public RedirectToActionResult TradeOffer(string playername, string playerposition, int playervalue)
         {
@@ -75,7 +74,7 @@ namespace FFProject.Controllers
             }
             return RedirectToAction("TradeOffer");
         }
-
+        */
 
         [AllowAnonymous]
         public IActionResult Links()

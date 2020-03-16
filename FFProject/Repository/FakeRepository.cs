@@ -34,9 +34,6 @@ namespace FFProject.Repository
             m2.Messenger = (new AppUser() { UserName = "Bob" });
             messages.Add(m2);
 
-
-
-
         }
 
         public List<Message> Messages => messages;

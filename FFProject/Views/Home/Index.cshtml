@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Roster>
 @{
     ViewData["Title"] = "Your Fantasy Team";
-    Layout = "~/Views/Shared/_FFForm.cshtml";
+    Layout = "~/Views/Shared/_FFTeamPage.cshtml";
 }
     <body>
         <div class="text-center">
@@ -10,7 +10,7 @@
 
         </div>
         <div>
-            <label for="PearlerSub">Add a team log here</label>
+            <label for="TeamLogo">Add a team log here</label>
             <input type="file"
                    id="TeamLogo" name="TeamLogoImage"
                    accept="image/png, image/jpeg">

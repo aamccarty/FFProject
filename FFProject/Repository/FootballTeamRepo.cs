@@ -23,12 +23,12 @@ namespace FFProject.Repository
             contextRoster.SaveChanges();
         }
 
-        public void AddTrade(TradeOffer offer)
+        /*public void AddTrade(TradeOffer offer)
         {
             contextRoster.Trades.Add(offer);
             //contextRoster.Remove(roster);
             contextRoster.SaveChanges();
-        }
+        }*/
         public Roster GetPlayerByName(string name)
         {
             Roster roster;

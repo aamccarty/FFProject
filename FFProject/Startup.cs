@@ -70,7 +70,13 @@ namespace FFProject
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-  
+
+            app.Use(async (context, next) =>
+                {
+                context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                await next();
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
